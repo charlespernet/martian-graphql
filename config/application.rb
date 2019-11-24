@@ -20,7 +20,7 @@ Bundler.require(*Rails.groups)
 module MartianGraphql
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.0
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -28,6 +28,12 @@ module MartianGraphql
     # the framework and any gems in your application.
 
     # Don't generate system test files.
-    config.generators.system_tests = nil
+    config.generators do |g|
+      g.test_framework  false
+      g.stylesheets     false
+      g.javascripts     false
+      g.helper          false
+      g.channel         assets: false
+    end
   end
 end
